@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Лаба 1</title>
+</head>
+<body>
+
+<h3>Завдання 1</h3>
+<script language="JavaScript">
+    document.write("Милян Олександр Андрійович");
+</script>
+<form>
+    <input type="button" value="Дата та місце народження" onClick="showBirthInfo()">
+</form>
+<script language="JavaScript">
+    function showBirthInfo() {
+        alert('28.03.2007 року в місті Львів');
+    }
+</script>
+
+<h3>Завдання 2</h3>
+<form>
+    <input type="button" value="F = x^y + y^z + z^x:" onclick="calculation()">
+</form>
+<script>
+    function calculation() {
+        let x = 1;
+        let y = 2;
+        let z = 3;
+
+        let term1 = Math.pow(x, y);
+        let term2 = Math.pow(y, z);
+        let term3 = Math.pow(z, x);
+
+        let result = term1 + term2 + term3;
+
+        alert("F = " + term1 + " + " + term2 + " + " + term3 + " = " + result);
+        
+    }
+</script>
+
+<h3>Завдання 3</h3>
+<p>Обробка подій: onSelect, onMouseOver</p>
+<form>
+    <input type="text" size="50" value="Виберіть текст і наведіть курсор" 
+           onSelect="handleEvent('Виділено текст (onSelect)')" 
+           onMouseOver="handleEvent('Курсор над полем (onMouseOver)')"><br><br>
+    
+    <input type="text" id="output" size="70" >
+</form>
+<script language="JavaScript">
+    function handleEvent(message) {
+        document.getElementById('output').value = message;
+    }
+</script>
+
+<h3>Завдання 4</h3>
+<h2>Обчислення функції F</h2>
+<img src="/lab1/3.png" alt=""><br>
+  <label for="x">x:</label>
+  <input type="number" id="x" step="any"><br>
+  
+  <label for="y">y:</label>
+  <input type="number" id="y" step="any"><br>
+  
+  <button onclick="calculateF()">Обчислити</button>
+  
+  <div id="result"></div>
+  
+  <script>
+    function calculateF() {
+      let x = parseFloat(document.getElementById('x').value);
+      let y = parseFloat(document.getElementById('y').value);
+      let F;
+
+      if (y > 3 && x > 0) {
+        F = 2 * Math.sqrt(x) * y;
+      } 
+      else if ((y * x * x / 2 > 3 * x) || (x * x > 2 * y)) {
+        F = x / (y * y);
+      } 
+      else {
+        F = (x * x) / y;
+      }
+
+      document.getElementById('result').textContent = "F = " + F.toFixed(4);
+    }
+  </script>
+
+<h3>Завдання 5</h3>
+<h2>Обчислення суми S</h2>
+<img src="/lab1/5.png" alt=""><br>
+    <label for="x2">x:</label>
+    <input type="number" id="x2" step="any"><br>
+    <label for="y2">y:</label>
+    <input type="number" id="y2" step="any"><br>
+    <button onclick="calculateS()">Обчислити S</button>
+    <div id="resultS" class="result"></div>
+  </div>
+
+  <script>
+    function calculateF() {
+      let x = parseFloat(document.getElementById('x').value);
+      let y = parseFloat(document.getElementById('y').value);
+      let F;
+
+      if (y > 3 && x > 0) {
+        F = 2 * Math.sqrt(x) * y;
+      } 
+      else if ((y * x * x / 2 > 3 * x) || (x * x > 2 * y)) {
+        F = x / (y * y);
+      } 
+      else {
+        F = (x * x) / y;
+      }
+
+      document.getElementById('resultF').textContent = "F = " + F.toFixed(4);
+    }
+
+    function factorial(n) {
+      if (n === 0 || n === 1) return 1;
+      let res = 1;
+      for (let i = 2; i <= n; i++) res *= i;
+      return res;
+    }
+
+    function calculateS() {
+      let x = parseFloat(document.getElementById('x2').value);
+      let y = parseFloat(document.getElementById('y2').value);
+      let S = 0;
+
+      for (let i = 6; i <= 12; i++) {
+        let term = Math.pow(-1, i) * ((Math.pow(x, y) - Math.sqrt(x)) / factorial(i));
+        S += term;
+      }
+
+      document.getElementById('resultS').textContent = "S = " + S.toFixed(6);
+    }
+  </script>
+
+  <h3>Завдання 6 +7</h3>
+  <form name="form1">
+    Оберіть товар:
+    <select name="product_select">
+      <option>Зошит</option>
+      <option>Зубна паста</option>
+      <option>Зарядка</option>
+    </select>
+    <input type="button" value="Наявна кількість і вартість" onclick="fun1()">
+    <br><br>
+
+    <input type="text" size="50" name="output_quantity" readonly>
+    <br>
+    <input type="text" size="50" name="output_cost" readonly>
+    <br><br>
+
+    <input type="button" value="Загальна сума" onclick="fun2()">
+    <br><br>
+
+    <input type="text" size="50" name="output_total" readonly>
+  </form>
+  <script>
+    let product = ["Зошит", "Зубна паста", "Зарядка"];
+    let quantity = [105, 200, 50];
+    let cost = [26, 45, 300];
+
+    let selectedIndex = -1;
+
+    function fun1() {
+      selectedIndex = document.form1.product_select.selectedIndex;
+      document.form1.output_quantity.value = "Кількість на складі: " + quantity[selectedIndex];
+      document.form1.output_cost.value = "Вартість за одиницю: " + cost[selectedIndex] + " грн";
+    }
+
+    function fun2() {
+      if (selectedIndex !== -1) {
+        let total = quantity[selectedIndex] * cost[selectedIndex];
+        document.form1.output_total.value = "Загальна сума: " + total + " грн";
+      } else {
+        document.form1.output_total.value = "Оберіть товар!";
+      }
+    }
+  </script>
+</body>
+</html>
