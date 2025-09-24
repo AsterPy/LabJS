@@ -3,10 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Лаба 1</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="p-5">
 
-<h3>Завдання 1</h3>
+  <button onclick="history.back()"
+    class="fixed bottom-6 right-6 w-14 h-14 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-lg hover:bg-blue-700 transition">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+    </svg>
+  </button>
+
+<h3 class="font-bold">Завдання 1</h3>
 <script language="JavaScript">
     document.write("Милян Олександр Андрійович");
 </script>
@@ -19,7 +27,7 @@
     }
 </script>
 
-<h3>Завдання 2</h3>
+<h3 class="font-bold mt-5">Завдання 2</h3>
 <form>
     <input type="button" value="F = x^y + y^z + z^x:" onclick="calculation()">
 </form>
@@ -40,14 +48,14 @@
     }
 </script>
 
-<h3>Завдання 3</h3>
+<h3 class="font-bold mt-5">Завдання 3</h3>
 <p>Обробка подій: onSelect, onMouseOver</p>
 <form>
     <input type="text" size="50" value="Виберіть текст і наведіть курсор" 
            onSelect="handleEvent('Виділено текст (onSelect)')" 
            onMouseOver="handleEvent('Курсор над полем (onMouseOver)')"><br><br>
     
-    <input type="text" id="output" size="70" >
+    <input class="border" type="text" id="output" size="70" >
 </form>
 <script language="JavaScript">
     function handleEvent(message) {
@@ -55,14 +63,15 @@
     }
 </script>
 
-<h3>Завдання 4</h3>
+<h3 class="font-bold mt-5">Завдання 4</h3>
 <h2>Обчислення функції F</h2>
 <img src="https://asterpy.github.io/LabJS/lab1/3.png" alt=""><br>
-  <label for="x">x:</label>
-<input type="number" id="x" step="any"><br>
+
+<label for="x">x:</label>
+<input class="border" type="number" id="x" step="any"><br>
 
 <label for="y">y:</label>
-<input type="number" id="y" step="any"><br>
+<input class="border" type="number" id="y" step="any"><br>
 
 <button onclick="calculateA()">Обчислити</button>
 
@@ -89,13 +98,13 @@
 </script>
 
 
-<h3>Завдання 5</h3>
+<h3 class="font-bold mt-5">Завдання 5</h3>
 <h2>Обчислення суми S</h2>
 <img src="https://asterpy.github.io/LabJS/lab1/5.png" alt=""><br>
     <label for="x2">x:</label>
-    <input type="number" id="x2" step="any"><br>
+    <input class="border" type="number" id="x2" step="any"><br>
     <label for="y2">y:</label>
-    <input type="number" id="y2" step="any"><br>
+    <input class="border" type="number" id="y2" step="any"><br>
     <button onclick="calculateS()">Обчислити S</button>
     <div id="resultS"></div>
   </div>
@@ -122,7 +131,7 @@
   }
 </script>
 
-  <h3>Завдання 6 +7</h3>
+  <h3 class="font-bold mt-5">Завдання 6 + 7</h3>
   <form name="form1">
     Оберіть товар:
     <select name="product_select">
@@ -133,15 +142,15 @@
     <input type="button" value="Наявна кількість і вартість" onclick="fun1()">
     <br><br>
 
-    <input type="text" size="50" name="output_quantity" readonly>
+    <input class="border" type="text" size="50" name="output_quantity" readonly>
     <br>
-    <input type="text" size="50" name="output_cost" readonly>
+    <input class="border" type="text" size="50" name="output_cost" readonly>
     <br><br>
 
-    <input type="button" value="Загальна сума" onclick="fun2()">
+    <input  type="button" value="Загальна сума" onclick="fun2()">
     <br><br>
 
-    <input type="text" size="50" name="output_total" readonly>
+    <input class="border" type="text" size="50" name="output_total" readonly>
   </form>
   <script>
     let product = ["Зошит", "Зубна паста", "Зарядка"];
@@ -165,5 +174,7 @@
       }
     }
   </script>
+
+  
 </body>
 </html>
