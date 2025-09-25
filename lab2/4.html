@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завдання 4 - console.log()</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen p-4">
+    <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-6">
+        <h1 class="text-2xl font-bold text-center text-gray-800 mb-4">Дослідження console.log()</h1>
+        
+
+        <div class="space-y-4">
+            <div class="border border-gray-200 rounded p-4">
+                <h2 class="text-lg font-semibold mb-2">1. Вивід остачі від ділення</h2>
+                <p class="text-gray-600 mb-2">a = 15, b = 4</p>
+                <button onclick="task1()" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
+                    Виконати завдання 1
+                </button>
+            </div>
+
+            <div class="border border-gray-200 rounded p-4">
+                <h2 class="text-lg font-semibold mb-2">2. Перевірка рівності нулю остачі</h2>
+                <p class="text-gray-600 mb-2">(a % b) === 0</p>
+                <button onclick="task2()" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">
+                    Виконати завдання 2
+                </button>
+            </div>
+
+            <div class="border border-gray-200 rounded p-4">
+                <h2 class="text-lg font-semibold mb-2">3. Комбінований вивід з масивом</h2>
+                <p class="text-gray-600 mb-2">arr = [10, 20, 30]</p>
+                <button onclick="task3()" class="bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded">
+                    Виконати завдання 3
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function task1() {
+            console.log("=== Завдання 1: Вивід остачі від ділення ===");
+            let a = 15;
+            let b = 4;
+            console.log("a = " + a);
+            console.log("b = " + b);
+            console.log("a % b = " + (a % b));
+            console.log("a % b =", a % b);
+            console.log("%d %% %d = %d", a, b, a % b);
+        }
+
+        function task2() {
+            console.log("=== Завдання 2: Перевірка рівності нулю остачі ===");
+            let a = 15;
+            let b = 4;
+            let result = (a % b) === 0;
+            console.log("(a % b) === 0: " + result);
+            console.log("(a % b) === 0:", result);
+            console.log("%d %% %d === 0 -> %s", a, b, result);
+        }
+
+        function task3() {
+            console.log("=== Завдання 3: Комбінований вивід з масивом ===");
+            let arr = [10, 20, 30];
+            console.log("Масив:", arr);
+            console.log("Значення масиву: %d, %d, %d", arr[0], arr[1], arr[2]);
+            console.log("Перший елемент масиву як рядок: %s", arr[0]);
+            console.log("Другий елемент: %d (число) або %s (рядок)", arr[1], arr[1]);
+        }
+    </script>
+
+    <button onclick="history.back()"
+        class="fixed bottom-6 right-6 w-14 h-14 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-lg hover:bg-blue-700 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+    </button>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Дослідження console.* методів</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+  <div class="bg-white shadow-lg rounded-2xl p-6 w-full max-w-md">
+    <h2 class="text-2xl font-semibold text-center mb-6">Дослідження console.*</h2>
+
+    <div class="grid grid-cols-2 gap-3">
+      <button onclick="console.info('Це інформаційне повідомлення')" 
+              class="bg-blue-500 hover:bg-blue-600 text-white rounded-lg py-2">console.info()</button>
+
+      <button onclick="console.warn('Це попередження')" 
+              class="bg-yellow-400 hover:bg-yellow-500 text-black rounded-lg py-2">console.warn()</button>
+
+      <button onclick="console.error('Це помилка!')" 
+              class="bg-red-500 hover:bg-red-600 text-white rounded-lg py-2">console.error()</button>
+
+      <button onclick="console.dir({name:'Олександр', age:18, skills:['Python','C++','JS']})" 
+              class="bg-green-500 hover:bg-green-600 text-white rounded-lg py-2">console.dir()</button>
+
+      <button onclick="let div=document.createElement('div');div.innerHTML='<p>Привіт!</p>';console.dirxml(div)" 
+              class="bg-purple-500 hover:bg-purple-600 text-white rounded-lg py-2">console.dirxml()</button>
+
+      <button onclick="startTimer()" 
+              class="bg-gray-400 hover:bg-gray-500 text-white rounded-lg py-2">console.time()</button>
+
+      <button onclick="endTimer()" 
+              class="bg-gray-700 hover:bg-gray-800 text-white rounded-lg py-2">console.timeEnd()</button>
+
+      <button onclick="startProfile()" 
+              class="bg-teal-500 hover:bg-teal-600 text-white rounded-lg py-2">console.profile()</button>
+
+      <button onclick="endProfile()" 
+              class="bg-teal-700 hover:bg-teal-800 text-white rounded-lg py-2">console.profileEnd()</button>
+
+      <button onclick="console.assert(5>10,'Помилка: 5 не більше 10')" 
+              class="bg-orange-500 hover:bg-orange-600 text-white rounded-lg py-2">console.assert()</button>
+    </div>
+  </div>
+
+  <script>
+    function startTimer() {
+      console.time("myTimer");
+      for (let i = 0; i < 1e5; i++) { Math.sqrt(i); }
+      console.log("Таймер запущено, натисни console.timeEnd()");
+    }
+
+    function endTimer() {
+      console.timeEnd("myTimer");
+    }
+
+    function startProfile() {
+      console.profile("MyProfile");
+      for (let i = 0; i < 1e5; i++) { Math.sqrt(i); }
+      console.log("Профайлер запущено, тепер натисни console.profileEnd()");
+    }
+
+    function endProfile() {
+      console.profileEnd("MyProfile");
+    }
+  </script>
+
+
+    <button onclick="history.back()"
+        class="fixed bottom-6 right-6 w-14 h-14 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-lg hover:bg-blue-700 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+    </button>
+</body>
+</html>
