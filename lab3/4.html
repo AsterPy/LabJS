@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen p-6">
+    <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg p-6">
+        <h2 class="text-2xl font-bold text-gray-800 mb-2 text-center">Галерея зображень</h2>
+        
+        <div class="flex items-center justify-between mb-6">
+            <button onclick="prevImage()" class="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-all shadow hover:shadow-md font-semibold flex items-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+                Назад
+            </button>
+            
+            <div class="text-center">
+                <span id="imageCounter" class="text-lg font-semibold text-gray-700">1 / 4</span>
+            </div>
+            
+            <button onclick="nextImage()" class="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-all shadow hover:shadow-md font-semibold flex items-center gap-2">
+                Вперед
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+            </button>
+        </div>
+
+        <div class="bg-gray-50 rounded-lg p-4 border-2 border-gray-200 mb-4">
+            <img id="galleryImage" src="" alt="Зображення галереї" class="mx-auto max-w-full h-auto max-h-96 object-contain rounded-lg">
+        </div>
+
+        <div class="text-center">
+            <p id="imageName" class="text-gray-600 font-medium"></p>
+        </div>
+    </div>
+
+    <script>
+        const images = [
+            'https://images.unsplash.com/photo-1506744038136-46273834b3fb',
+            'https://images.unsplash.com/photo-1518837695005-2083093ee35b',
+            'https://images.unsplash.com/photo-1559827260-dc66d52bef19',
+            'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05'
+        ];
+
+        let currentIndex = 0;
+
+        function showImage() {
+            const imageElement = document.getElementById('galleryImage');
+            const counterElement = document.getElementById('imageCounter');
+            const nameElement = document.getElementById('imageName');
+            
+            imageElement.src = images[currentIndex] + '?w=800&h=600&fit=crop';
+            imageElement.alt = `Зображення ${currentIndex + 1}`;
+            counterElement.textContent = `${currentIndex + 1} / ${images.length}`;
+            nameElement.textContent = `Зображення ${currentIndex + 1}`;
+        }
+
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            showImage();
+        }
+
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            showImage();
+        }
+
+        showImage();
+    </script>
+
+    <button onclick="history.back()"
+        class="fixed bottom-6 right-6 w-14 h-14 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-lg hover:bg-blue-700 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+    </button>
+</body>
+</html>

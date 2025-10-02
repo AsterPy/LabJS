@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Екранна клавіатура</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen p-6">
+    <div class="max-w-3xl mx-auto bg-white rounded-xl shadow-lg p-6">
+        <h2 class="text-2xl font-bold text-gray-800 mb-2 text-center">Екранна клавіатура</h2>
+        <p class="text-gray-600 text-center mb-6">Українська розкладка</p>
+        
+        <textarea id="display" rows="4" class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg mb-6 focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100 transition-all resize-none" placeholder="Почніть вводити текст..."></textarea>
+        
+        <div class="flex gap-3 mb-6">
+            <button onclick="clean()" class="px-6 py-3 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-all shadow hover:shadow-md flex-1 font-semibold">Очистити поле</button>
+        </div>
+        
+        <div id="screenKeyboard" class="bg-gray-50 p-4 rounded-lg border border-gray-200"></div>
+    </div>
+
+    <script>
+        const letters_ua = ["а", "б", "в", "г", "ґ", "д", "е", "є", "ж", "з", "и", "і", "ї", "й", "к", "л", "м", "н", "о", "п", "р", "с", "т", "у", "ф", "х", "ц", "ч", "ш", "щ", "ь", "ю", "я"];
+        const digits = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+
+        function createKeyboard() {
+            let keys = '<div class="flex justify-center gap-1 mb-3">';
+            
+            // Цифри
+            digits.forEach(digit => {
+                keys += `<button onclick="addSymbol('${digit}')" class="px-4 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-all transform hover:scale-105 shadow font-semibold min-w-[50px]">${digit}</button>`;
+            });
+            
+            keys += '</div><div class="space-y-2">';
+            
+            // Перший ряд літер
+            keys += '<div class="flex justify-center gap-1">';
+            for(let j = 0; j < 10 && j < letters_ua.length; j++) {
+                keys += `<button onclick="addSymbol('${letters_ua[j]}')" class="px-4 py-3 bg-white text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-all transform hover:scale-105 border border-gray-200 shadow font-medium min-w-[50px]">${letters_ua[j]}</button>`;
+            }
+            keys += '</div>';
+            
+            // Другий ряд літер
+            keys += '<div class="flex justify-center gap-1">';
+            for(let j = 10; j < 20 && j < letters_ua.length; j++) {
+                keys += `<button onclick="addSymbol('${letters_ua[j]}')" class="px-4 py-3 bg-white text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-all transform hover:scale-105 border border-gray-200 shadow font-medium min-w-[50px]">${letters_ua[j]}</button>`;
+            }
+            keys += '</div>';
+            
+            // Третій ряд літер
+            keys += '<div class="flex justify-center gap-1">';
+            for(let j = 20; j < 30 && j < letters_ua.length; j++) {
+                keys += `<button onclick="addSymbol('${letters_ua[j]}')" class="px-4 py-3 bg-white text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-all transform hover:scale-105 border border-gray-200 shadow font-medium min-w-[50px]">${letters_ua[j]}</button>`;
+            }
+            keys += '</div>';
+            
+            // Четвертий ряд (пробіл)
+            keys += '<div class="flex justify-center gap-1 mt-3">';
+            keys += `<button onclick="addSymbol(' ')" class="px-20 py-3 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition-all transform hover:scale-105 border border-gray-200 shadow font-medium">Пробіл</button>`;
+            keys += '</div>';
+            
+            keys += '</div>';
+            document.getElementById('screenKeyboard').innerHTML = keys;
+        }
+
+        function addSymbol(key) {
+            const display = document.getElementById('display');
+            display.value += key;
+            display.focus();
+        }
+
+        function clean() {
+            document.getElementById('display').value = "";
+        }
+
+        createKeyboard();
+    </script>
+
+    <button onclick="history.back()"
+        class="fixed bottom-6 right-6 w-14 h-14 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-lg hover:bg-blue-700 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+    </button>
+</body>
+</html>
