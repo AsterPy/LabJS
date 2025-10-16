@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Перемикач теми та модальне вікно</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800 transition-colors duration-500">
+
+  <section class="text-center mt-10">
+    <h1 class="text-2xl font-bold mb-4">Перемикач теми</h1>
+    <button id="themeToggle"
+      class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition">
+      Змінити тему
+    </button>
+    <p class="mt-2 text-gray-600 dark:text-gray-300">Натисни кнопку, щоб перемкнути світлу або темну тему.</p>
+  </section>
+
+  <section class="text-center my-10">
+    <h2 class="text-xl font-semibold mb-3">Модальне вікно</h2>
+    <button id="showModal"
+      class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg transition">
+      Показати повідомлення
+    </button>
+  </section>
+
+  <div id="modal" class="hidden fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+    <div class="modal-content bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 w-80 relative animate-[fadeIn_0.3s_ease]">
+      <span id="closeModal" class="absolute top-2 right-3 text-xl cursor-pointer text-gray-500 hover:text-gray-800">&times;</span>
+      <p class="text-gray-700 dark:text-gray-200">Це модальне вікно. Натисни на хрестик або поза ним, щоб закрити.</p>
+    </div>
+  </div>
+
+  <script>
+    
+    const themeBtn = document.getElementById('themeToggle');
+    themeBtn.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      document.body.classList.toggle('bg-gray-900');
+      document.body.classList.toggle('text-gray-100');
+    });
+
+    const modal = document.getElementById('modal');
+    const show = document.getElementById('showModal');
+    const close = document.getElementById('closeModal');
+
+    show.onclick = () => modal.classList.remove('hidden');
+    close.onclick = () => modal.classList.add('hidden');
+    window.onclick = e => { if (e.target === modal) modal.classList.add('hidden'); };
+  </script>
+
+    <button onclick="window.location.href='https://asterpy.github.io/LabJS/lab5/2.html'"
+        class="fixed top-8 right-6 px-4 h-14 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-lg hover:bg-blue-700 transition">
+        Завдання 2
+    </button>
+    <button onclick="history.back()"
+        class="fixed bottom-8 right-6 w-14 h-14 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-lg hover:bg-blue-700 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+    </button>
+</body>
+</html>
