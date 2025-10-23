@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Лаба 1</title>
-    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="p-5">
 
@@ -131,49 +130,54 @@
   }
 </script>
 
-  <h3 class="font-bold mt-5">Завдання 6 + 7</h3>
-  <form name="form1">
-    Оберіть товар:
-    <select name="product_select">
-      <option>Зошит</option>
-      <option>Зубна паста</option>
-      <option>Зарядка</option>
-    </select>
-    <input type="button" value="Наявна кількість і вартість" onclick="fun1()">
-    <br><br>
+<h3 class="font-bold mt-5">Завдання 6 + 7</h3>
+<form name="form1">
+  Оберіть товар:
+  <select name="product_select">
+    <option>Зошит</option>
+    <option>Зубна паста</option>
+    <option>Зарядка</option>
+  </select>
+  <input type="button" value="Наявна кількість і вартість" onclick="fun1()">
+  <br><br>
+  <input class="border" type="text" size="50" name="output_id" readonly>
+  <br>
+  <input class="border" type="text" size="50" name="output_quantity" readonly>
+  <br>
+  <input class="border" type="text" size="50" name="output_cost" readonly>
+  <br><br>
 
-    <input class="border" type="text" size="50" name="output_quantity" readonly>
-    <br>
-    <input class="border" type="text" size="50" name="output_cost" readonly>
-    <br><br>
+  <input type="button" value="Загальна сума" onclick="fun2()">
+  <br><br>
 
-    <input  type="button" value="Загальна сума" onclick="fun2()">
-    <br><br>
+  <input class="border" type="text" size="50" name="output_total" readonly>
+</form>
 
-    <input class="border" type="text" size="50" name="output_total" readonly>
-  </form>
-  <script>
-    let product = ["Зошит", "Зубна паста", "Зарядка"];
-    let quantity = [105, 200, 50];
-    let cost = [26, 45, 300];
+<script>
+  let product = ["Зошит", "Зубна паста", "Зарядка"];
+  let quantity = [105, 200, 50];
+  let cost = [26, 45, 300];
 
-    let selectedIndex = -1;
+  let selectedIndex = -1;
 
-    function fun1() {
-      selectedIndex = document.form1.product_select.selectedIndex;
-      document.form1.output_quantity.value = "Кількість на складі: " + quantity[selectedIndex];
-      document.form1.output_cost.value = "Вартість за одиницю: " + cost[selectedIndex] + " грн";
+  function fun1() {
+    const form = document.forms["form1"];
+    selectedIndex = form.product_select.selectedIndex;
+    form.output_id.value = "Айді: " + selectedIndex;
+    form.output_quantity.value = "Кількість на складі: " + quantity[selectedIndex];
+    form.output_cost.value = "Вартість за одиницю: " + cost[selectedIndex] + " грн";
+  }
+
+  function fun2() {
+    const form = document.forms["form1"];
+    if (selectedIndex !== -1) {
+      let total = quantity[selectedIndex] * cost[selectedIndex];
+      form.output_total.value = "Загальна сума: " + total + " грн";
+    } else {
+      form.output_total.value = "Оберіть товар!";
     }
-
-    function fun2() {
-      if (selectedIndex !== -1) {
-        let total = quantity[selectedIndex] * cost[selectedIndex];
-        document.form1.output_total.value = "Загальна сума: " + total + " грн";
-      } else {
-        document.form1.output_total.value = "Оберіть товар!";
-      }
-    }
-  </script>
+  }
+</script>
 
   
 </body>
