@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторна 7</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen p-6">
+    <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-6">
+        <h1 class="text-3xl font-bold text-center text-blue-600 mb-8">Робота з рядком</h1>
+        
+        <!-- Завдання 1 -->
+        <div class="mb-8 p-4 border border-gray-200 rounded-lg">
+            <h2 class="text-xl font-semibold mb-2">1. Довжина рядка</h2>
+            <div class="flex gap-2 mb-2">
+                <input type="text" id="task1-input" placeholder="Введіть рядок" 
+                       class="flex-1 p-2 border border-gray-300 rounded">
+                <button onclick="task1()" 
+                        class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                    Обчислити
+                </button>
+            </div>
+            <p id="task1-result" class="text-gray-700"></p>
+        </div>
+        
+        <!-- Завдання 2 -->
+        <div class="mb-8 p-4 border border-gray-200 rounded-lg">
+            <h2 class="text-xl font-semibold mb-2">2. Регістр рядка</h2>
+            <div class="flex gap-2 mb-2">
+                <input type="text" id="task2-input" placeholder="Введіть рядок" 
+                       class="flex-1 p-2 border border-gray-300 rounded">
+                <button onclick="task2()" 
+                        class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                    Конвертувати
+                </button>
+            </div>
+            <p id="task2-result" class="text-gray-700"></p>
+        </div>
+        
+        <!-- Завдання 3 -->
+        <div class="mb-8 p-4 border border-gray-200 rounded-lg">
+            <h2 class="text-xl font-semibold mb-2">3. Пошук символу</h2>
+            <div class="flex gap-2 mb-2">
+                <input type="text" id="task3-str" placeholder="Рядок" 
+                       class="flex-1 p-2 border border-gray-300 rounded">
+                <input type="text" id="task3-char" placeholder="Символ" 
+                       class="w-20 p-2 border border-gray-300 rounded">
+                <button onclick="task3()" 
+                        class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                    Знайти
+                </button>
+            </div>
+            <p id="task3-result" class="text-gray-700"></p>
+        </div>
+        
+        <!-- Завдання 4 -->
+        <div class="mb-8 p-4 border border-gray-200 rounded-lg">
+            <h2 class="text-xl font-semibold mb-2">4. Кількість входжень символу</h2>
+            <div class="flex gap-2 mb-2">
+                <input type="text" id="task4-str" placeholder="Рядок" 
+                       class="flex-1 p-2 border border-gray-300 rounded">
+                <input type="text" id="task4-char" placeholder="Символ" 
+                       class="w-20 p-2 border border-gray-300 rounded">
+                <button onclick="task4()" 
+                        class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                    Підрахувати
+                </button>
+            </div>
+            <p id="task4-result" class="text-gray-700"></p>
+        </div>
+        
+        <!-- Завдання 5 -->
+        <div class="mb-8 p-4 border border-gray-200 rounded-lg">
+            <h2 class="text-xl font-semibold mb-2">5. Обмін сусідніх символів</h2>
+            <div class="flex gap-2 mb-2">
+                <input type="text" id="task5-input" placeholder="Введіть рядок" 
+                       class="flex-1 p-2 border border-gray-300 rounded">
+                <button onclick="task5()" 
+                        class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                    Обміняти
+                </button>
+            </div>
+            <p id="task5-result" class="text-gray-700"></p>
+        </div>
+        
+        <!-- Завдання 6 -->
+        <div class="mb-8 p-4 border border-gray-200 rounded-lg">
+            <h2 class="text-xl font-semibold mb-2">6. Перевірка на спам</h2>
+            <div class="flex gap-2 mb-2">
+                <input type="text" id="task6-input" placeholder="Введіть текст" 
+                       class="flex-1 p-2 border border-gray-300 rounded">
+                <button onclick="task6()" 
+                        class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                    Перевірити
+                </button>
+            </div>
+            <p id="task6-result" class="text-gray-700"></p>
+        </div>
+        
+        <!-- Завдання 7 -->
+        <div class="mb-8 p-4 border border-gray-200 rounded-lg">
+            <h2 class="text-xl font-semibold mb-2">7. Скорочення рядка</h2>
+            <div class="flex gap-2 mb-2">
+                <input type="text" id="task7-str" placeholder="Рядок" 
+                       class="flex-1 p-2 border border-gray-300 rounded">
+                <input type="number" id="task7-len" placeholder="Макс. довжина" 
+                       class="w-32 p-2 border border-gray-300 rounded">
+                <button onclick="task7()" 
+                        class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                    Скоротити
+                </button>
+            </div>
+            <p id="task7-result" class="text-gray-700"></p>
+        </div>
+        
+        <!-- Завдання 8 -->
+        <div class="mb-8 p-4 border border-gray-200 rounded-lg">
+            <h2 class="text-xl font-semibold mb-2">8. Видалення голосних</h2>
+            <div class="flex gap-2 mb-2">
+                <input type="text" id="task8-input" placeholder="Введіть рядок" 
+                       class="flex-1 p-2 border border-gray-300 rounded">
+                <button onclick="task8()" 
+                        class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                    Видалити
+                </button>
+            </div>
+            <p id="task8-result" class="text-gray-700"></p>
+        </div>
+        
+        <!-- Завдання 9 -->
+        <div class="mb-8 p-4 border border-gray-200 rounded-lg">
+            <h2 class="text-xl font-semibold mb-2">9. Заміна "JavaScript" на "JS"</h2>
+            <div class="flex gap-2 mb-2">
+                <input type="text" id="task9-input" placeholder="Введіть текст" 
+                       class="flex-1 p-2 border border-gray-300 rounded">
+                <button onclick="task9()" 
+                        class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                    Замінити
+                </button>
+            </div>
+            <p id="task9-result" class="text-gray-700"></p>
+        </div>
+        
+        <!-- Завдання 10 -->
+        <div class="mb-8 p-4 border border-gray-200 rounded-lg">
+            <h2 class="text-xl font-semibold mb-2">10. Перевірка на наявність паліндрому</h2>
+            <div class="flex gap-2 mb-2">
+                <input type="text" id="task10-input" placeholder="Введіть рядок" 
+                       class="flex-1 p-2 border border-gray-300 rounded">
+                <button onclick="task10()" 
+                        class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                    Перевірити
+                </button>
+            </div>
+            <p id="task10-result" class="text-gray-700"></p>
+        </div>
+
+        <button onclick="history.back()"
+            class="fixed bottom-6 right-6 w-14 h-14 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-lg hover:bg-blue-700 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+        </button>
+    </div>
+
+    <script>
+        // Завдання 1: Довжина рядка
+        function getStringLength(str) {
+            return str.length;
+        }
+        
+        function task1() {
+            const input = document.getElementById('task1-input').value;
+            const result = getStringLength(input);
+            document.getElementById('task1-result').textContent = `Довжина рядка: ${result}`;
+        }
+        
+        // Завдання 2: Регістр рядка
+        function changeCase(str) {
+            return {
+                upper: str.toUpperCase(),
+                lower: str.toLowerCase()
+            };
+        }
+        
+        function task2() {
+            const input = document.getElementById('task2-input').value;
+            const result = changeCase(input);
+            document.getElementById('task2-result').textContent = 
+                `Верхній регістр: ${result.upper}, Нижній регістр: ${result.lower}`;
+        }
+        
+        // Завдання 3: Пошук символу
+        function findFirstOccurrence(str, char) {
+            return str.indexOf(char);
+        }
+        
+        function task3() {
+            const str = document.getElementById('task3-str').value;
+            const char = document.getElementById('task3-char').value;
+            const result = findFirstOccurrence(str, char);
+            document.getElementById('task3-result').textContent = 
+                `Індекс першого входження: ${result}`;
+        }
+        
+        // Завдання 4: Кількість входжень символу
+        function countOccurrences(str, char) {
+            let count = 0;
+            for (let i = 0; i < str.length; i++) {
+                if (str[i] === char) count++;
+            }
+            return count;
+        }
+        
+        function task4() {
+            const str = document.getElementById('task4-str').value;
+            const char = document.getElementById('task4-char').value;
+            const result = countOccurrences(str, char);
+            document.getElementById('task4-result').textContent = 
+                `Кількість входжень символу "${char}": ${result}`;
+        }
+        
+        // Завдання 5: Обмін сусідніх символів
+        function swapAdjacentChars(str) {
+            let result = '';
+            for (let i = 0; i < str.length; i += 2) {
+                if (i + 1 < str.length) {
+                    result += str[i + 1] + str[i];
+                } else {
+                    result += str[i];
+                }
+            }
+            return result;
+        }
+        
+        function task5() {
+            const input = document.getElementById('task5-input').value;
+            const result = swapAdjacentChars(input);
+            document.getElementById('task5-result').textContent = `Результат: ${result}`;
+        }
+        
+        // Завдання 6: Перевірка на спам
+        function checkSpam(str) {
+            const spamWords = ['100% безкоштовно', 'збільшення продажів', 'тільки сьогодні', 'не видаляйте'];
+            const lowerStr = str.toLowerCase();
+            
+            for (let word of spamWords) {
+                if (lowerStr.includes(word.toLowerCase())) {
+                    return true;
+                }
+            }
+            return false;
+        }
+        
+        function task6() {
+            const input = document.getElementById('task6-input').value;
+            const result = checkSpam(input);
+            document.getElementById('task6-result').textContent = 
+                `Текст ${result ? 'містить' : 'не містить'} спам`;
+        }
+        
+        // Завдання 7: Скорочення рядка
+        function truncate(str, maxLength) {
+            if (str.length <= maxLength) {
+                return str;
+            }
+            
+            if (maxLength <= 3) {
+                return str.substring(0, maxLength);
+            }
+            
+            return str.substring(0, maxLength - 3) + '...';
+        }
+        
+        function task7() {
+            const str = document.getElementById('task7-str').value;
+            const maxLength = parseInt(document.getElementById('task7-len').value);
+            const result = truncate(str, maxLength);
+            document.getElementById('task7-result').textContent = `Результат: ${result}`;
+        }
+        
+        // Завдання 8: Видалення голосних
+        function removeVowels(str) {
+            const vowels = 'aeiouаеєиіїоуюя';
+            let result = '';
+            
+            for (let char of str) {
+                if (!vowels.includes(char.toLowerCase())) {
+                    result += char;
+                }
+            }
+            
+            return result;
+        }
+        
+        function task8() {
+            const input = document.getElementById('task8-input').value;
+            const result = removeVowels(input);
+            document.getElementById('task8-result').textContent = `Результат: ${result}`;
+        }
+        
+        // Завдання 9: Заміна "JavaScript" на "JS"
+        function replaceJavaScript(str) {
+            return str.replace(/JavaScript/gi, 'JS');
+        }
+        
+        function task9() {
+            const input = document.getElementById('task9-input').value;
+            const result = replaceJavaScript(input);
+            document.getElementById('task9-result').textContent = `Результат: ${result}`;
+        }
+        
+        // Завдання 10: Перевірка на наявність паліндрому
+        function hasPalindromeSubstring(str) {
+            
+            function isPalindrome(s) {
+                return s === s.split('').reverse().join('');
+            }
+            
+            
+            for (let length = 3; length <= str.length; length++) {
+                for (let i = 0; i <= str.length - length; i++) {
+                    const substring = str.substring(i, i + length);
+                    if (isPalindrome(substring)) {
+                        return true;
+                    }
+                }
+            }
+            
+            return false;
+        }
+        
+        function task10() {
+            const input = document.getElementById('task10-input').value;
+            const result = hasPalindromeSubstring(input);
+            document.getElementById('task10-result').textContent = 
+                `Підрядок-паліндром ${result ? 'знайдено' : 'не знайдено'}`;
+        }
+    </script>
+
+</body>
+</html>
