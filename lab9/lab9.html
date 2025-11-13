@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Tailwind Logo Animation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-900 min-h-screen flex justify-center items-center">
+
+<div id="logo" class="relative cursor-pointer select-none flex items-center justify-center">
+
+  <!-- ПУЛЬСУЮЧЕ КІЛЬЦЕ -->
+  <div id="ring"
+       class="absolute w-40 h-40 md:w-48 md:h-48 rounded-full border border-cyan-400/50
+              animate-pulse shadow-[0_0_40px_rgba(34,211,238,0.35)]">
+  </div>
+
+  <!-- ЗАЛИВКА (коло → scale) -->
+  <div id="fill"
+       class="absolute w-40 h-40 md:w-48 md:h-48 rounded-full
+              bg-gradient-to-br from-cyan-500/50 via-sky-500/60 to-blue-800/80 blur-sm
+              opacity-0 scale-0 transition-all duration-700 ease-out">
+  </div>
+
+  <!-- ТЕКСТ ЛОГОТИПУ -->
+  <div id="text" class="relative text-slate-200 font-semibold tracking-[0.25em] text-xl md:text-2xl flex">
+  </div>
+</div>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const text = document.getElementById("text");
+  const fill = document.getElementById("fill");
+  const logo = document.getElementById("logo");
+
+  const TITLE = "ІНЖЕНЕРІЯ ПЗ";
+  let letters = [];
+  let animating = false;
+  let timers = [];
+
+  function build() {
+    text.innerHTML = "";
+    letters = [];
+
+    for (const ch of TITLE) {
+      const span = document.createElement("span");
+      span.textContent = ch === " " ? "\u00A0" : ch;
+
+      span.className = `
+        inline-block
+        translate-y-[-80%]
+        opacity-0
+        transition-all
+        duration-500
+        ease-out
+      `;
+
+      letters.push(span);
+      text.appendChild(span);
+    }
+  }
+  build();
+
+  function reset() {
+    timers.forEach(clearTimeout);
+    timers = [];
+
+    fill.classList.remove("opacity-100", "scale-100");
+
+    letters.forEach(span => {
+      span.classList.remove("opacity-100", "translate-y-0", "text-cyan-300", "drop-shadow-[0_0_12px_rgba(56,189,248,0.85)]");
+      span.classList.add("opacity-0", "translate-y-[-80%]");
+    });
+  }
+
+  function createSpark() {
+    const spark = document.createElement("div");
+
+    spark.className = `
+      absolute w-2 h-2 rounded-full bg-cyan-100
+      animate-ping
+    `;
+
+    spark.style.left = 50 + (Math.random()*40 - 20) + "%";
+    spark.style.top  = 50 + (Math.random()*40 - 20) + "%";
+
+    logo.appendChild(spark);
+    setTimeout(() => spark.remove(), 700);
+  }
+
+  function start() {
+    animating = true;
+    reset();
+
+    fill.classList.add("opacity-100", "scale-100");
+
+    let delay = 0;
+    letters.forEach((span, i) => {
+
+      const t = setTimeout(() => {
+        span.classList.remove("opacity-0", "translate-y-[-80%]");
+        span.classList.add("opacity-100", "translate-y-0");
+
+        if (Math.random() > 0.7 || ["П","З"].includes(span.textContent)) {
+          span.classList.add("text-cyan-300", "drop-shadow-[0_0_12px_rgba(56,189,248,0.85)]");
+        }
+
+        if (i > letters.length/2 && Math.random() > 0.5)
+          createSpark();
+
+      }, delay);
+
+      timers.push(t);
+      delay += 80;
+    });
+
+    const end = setTimeout(() => {
+      animating = false;
+    }, delay+600);
+
+    timers.push(end);
+  }
+
+  logo.addEventListener("click", () => {
+    if (animating) {
+      animating = false;
+      reset();
+      return;
+    }
+    start();
+  });
+
+  reset();
+});
+</script>
+
+</body>
+</html>
