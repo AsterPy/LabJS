@@ -101,12 +101,7 @@
     $('#singleBtn').on('click', ()=>alert('Одинарний клік'));
     $('#doubleBtn').on('dblclick', ()=>alert('Подвійний клік'));
 
-    $('#showImageLink').on('click', ()=>$('#imageWrap').fadeIn(200));
-    $('#demoImg').on('click', ()=>$('#imageWrap').fadeOut(200));
-    $('#demoImg').on('mousemove', e=>{
-        $('#tooltip').show().css({ left:e.pageX+10, top:e.pageY+10 });
-    });
-    $('#demoImg').on('mouseout', ()=>$('#tooltip').hide());
+  
 
 
     });

@@ -2,41 +2,502 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8">
-  <title>Лабораторна 8</title>
+  <title>Лабораторна робота</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-900 text-white min-h-screen flex items-center justify-center">
+<body class="bg-slate-900 text-slate-100 min-h-screen">
 
-  <div class="bg-gray-800 rounded-2xl shadow-2xl p-8 w-full max-w-lg">
-    <h1 class="text-2xl font-bold mb-6 text-center text-cyan-400">
-      Лабораторна робота 8 — Варіант 13
+  <main class="max-w-5xl mx-auto p-6 space-y-10">
+    <h1 class="text-3xl font-bold text-center text-cyan-400 mb-4">
+      Лабораторна робота 8
     </h1>
+    <section class="bg-slate-800 rounded-2xl p-5 shadow-xl space-y-4">
+      <h2 class="text-xl font-semibold text-cyan-300">
+        Завдання 1. Об'єкт часу
+      </h2>
 
-    <form id="shapeForm" class="space-y-4">
-      <div>
-        <label class="block mb-1">Ширина (width):</label>
-        <input type="number" id="width" class="w-full p-2 rounded bg-gray-700 focus:outline-none">
+      <div class="grid md:grid-cols-4 gap-4 items-end">
+        <div>
+          <label class="block mb-1 text-sm">Години (0–23):</label>
+          <input type="number" id="t1-hours"
+                 class="w-full px-3 py-2 rounded bg-slate-700 border border-slate-600 focus:outline-none"
+                 value="20" min="0" max="23">
+        </div>
+        <div>
+          <label class="block mb-1 text-sm">Хвилини (0–59):</label>
+          <input type="number" id="t1-minutes"
+                 class="w-full px-3 py-2 rounded bg-slate-700 border border-slate-600 focus:outline-none"
+                 value="30" min="0" max="59">
+        </div>
+        <div>
+          <label class="block mb-1 text-sm">Секунди (0–59):</label>
+          <input type="number" id="t1-seconds"
+                 class="w-full px-3 py-2 rounded bg-slate-700 border border-slate-600 focus:outline-none"
+                 value="45" min="0" max="59">
+        </div>
+        <div>
+          <label class="block mb-1 text-sm">Додати секунд (+/-):</label>
+          <input type="number" id="t1-delta"
+                 class="w-full px-3 py-2 rounded bg-slate-700 border border-slate-600 focus:outline-none"
+                 value="30">
+        </div>
       </div>
 
-      <div>
-        <label class="block mb-1">Висота (height):</label>
-        <input type="number" id="height" class="w-full p-2 rounded bg-gray-700 focus:outline-none">
+      <div class="flex flex-wrap gap-3 mt-3">
+        <button id="t1-show"
+                class="px-4 py-2 rounded bg-cyan-500 hover:bg-cyan-600 text-sm font-semibold">
+          1.1 Показати час
+        </button>
+        <button id="t1-add"
+                class="px-4 py-2 rounded bg-emerald-500 hover:bg-emerald-600 text-sm font-semibold">
+          1.2 Додати секунди
+        </button>
       </div>
 
-      <div class="flex gap-4 mt-6">
-        <button type="button" id="showBtn" class="bg-cyan-500 hover:bg-cyan-600 text-white px-4 py-2 rounded w-1/2">
+      <div id="t1-output"
+           class="mt-3 rounded-lg bg-slate-700/70 px-4 py-3 text-sm min-h-[2.5rem]">
+      </div>
+    </section>
+
+    <!-- ЗАВДАННЯ 2.1 -->
+    <section class="bg-slate-800 rounded-2xl p-5 shadow-xl space-y-4">
+      <h2 class="text-xl font-semibold text-cyan-300">
+        Завдання 2.1. Виведення поточної дати, дня тижня і часу
+      </h2>
+      <p class="text-sm text-slate-300">
+        Формат: <em>Дата: 21 жовтня 2025 року / День тижня / Час: 15:08</em>
+      </p>
+      <button id="t21-run"
+              class="px-4 py-2 rounded bg-cyan-500 hover:bg-cyan-600 text-sm font-semibold">
+        Виконати
+      </button>
+      <div id="t21-output"
+           class="mt-3 rounded-lg bg-slate-700/70 px-4 py-3 text-sm min-h-[3rem]">
+      </div>
+    </section>
+
+    <!--  ЗАВДАННЯ 2.2  -->
+    <section class="bg-slate-800 rounded-2xl p-5 shadow-xl space-y-4">
+      <h2 class="text-xl font-semibold text-cyan-300">
+        Завдання 2.2. Останній день місяця
+      </h2>
+      <div class="grid md:grid-cols-3 gap-4 items-end">
+        <div>
+          <label class="block mb-1 text-sm">Рік:</label>
+          <input type="number" id="t22-year"
+                 class="w-full px-3 py-2 rounded bg-slate-700 border border-slate-600 focus:outline-none"
+                 value="2025">
+        </div>
+        <div>
+          <label class="block mb-1 text-sm">Місяць (1–12):</label>
+          <input type="number" id="t22-month"
+                 class="w-full px-3 py-2 rounded bg-slate-700 border border-slate-600 focus:outline-none"
+                 value="10" min="1" max="12">
+        </div>
+        <div>
+          <button id="t22-run"
+                  class="w-full px-4 py-2 rounded bg-cyan-500 hover:bg-cyan-600 text-sm font-semibold">
+            Знайти останній день
+          </button>
+        </div>
+      </div>
+      <div id="t22-output"
+           class="mt-3 rounded-lg bg-slate-700/70 px-4 py-3 text-sm min-h-[2.5rem]">
+      </div>
+    </section>
+
+    <!--  ЗАВДАННЯ 2.3  -->
+    <section class="bg-slate-800 rounded-2xl p-5 shadow-xl space-y-4">
+      <h2 class="text-xl font-semibold text-cyan-300">
+        Завдання 2.3. Секунди від початку дня / до завтра
+      </h2>
+      <button id="t23-run"
+              class="px-4 py-2 rounded bg-cyan-500 hover:bg-cyan-600 text-sm font-semibold">
+        Обчислити
+      </button>
+      <div id="t23-output"
+           class="mt-3 rounded-lg bg-slate-700/70 px-4 py-3 text-sm min-h-[3rem]">
+      </div>
+    </section>
+
+    <!--  ЗАВДАННЯ 3  -->
+    <section class="bg-slate-800 rounded-2xl p-5 shadow-xl space-y-4">
+      <h2 class="text-xl font-semibold text-cyan-300">
+        Завдання 3. Клас Car
+      </h2>
+
+      <div class="grid md:grid-cols-3 gap-4 items-end">
+        <div>
+          <label class="block mb-1 text-sm">Марка (brand):</label>
+          <input type="text" id="car-brand"
+                 class="w-full px-3 py-2 rounded bg-slate-700 border border-slate-600 focus:outline-none"
+                 placeholder="Toyota">
+        </div>
+        <div>
+          <label class="block mb-1 text-sm">Модель (model):</label>
+          <input type="text" id="car-model"
+                 class="w-full px-3 py-2 rounded bg-slate-700 border border-slate-600 focus:outline-none"
+                 placeholder="Camry">
+        </div>
+        <div>
+          <label class="block mb-1 text-sm">Рік (year):</label>
+          <input type="number" id="car-year"
+                 class="w-full px-3 py-2 rounded bg-slate-700 border border-slate-600 focus:outline-none"
+                 value="2020">
+        </div>
+      </div>
+
+      <div class="flex flex-wrap gap-3 mt-3">
+        <button id="car-show"
+                class="px-4 py-2 rounded bg-cyan-500 hover:bg-cyan-600 text-sm font-semibold">
           Показати інформацію
         </button>
-        <button type="reset" id="clearBtn" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded w-1/2">
-          Очистити
+        <button id="car-clear"
+                class="px-4 py-2 rounded bg-red-500 hover:bg-red-600 text-sm font-semibold">
+          Очистити поля
         </button>
       </div>
-    </form>
 
-    <div id="result" class="mt-6 p-4 bg-gray-700 rounded-lg hidden"></div>
-  </div>
+      <div id="car-output"
+           class="mt-3 rounded-lg bg-slate-700/70 px-4 py-3 text-sm min-h-[2.5rem]">
+      </div>
+    </section>
+
+    <!--  ЗАВДАННЯ 4  -->
+    <section class="bg-slate-800 rounded-2xl p-5 shadow-xl space-y-4">
+      <h2 class="text-xl font-semibold text-cyan-300">
+        Завдання 4. Клас ElectricCar (наслідування від Car)
+      </h2>
+
+      <div class="grid md:grid-cols-4 gap-4 items-end">
+        <div>
+          <label class="block mb-1 text-sm">Марка:</label>
+          <input type="text" id="ecar-brand"
+                 class="w-full px-3 py-2 rounded bg-slate-700 border border-slate-600 focus:outline-none"
+                 placeholder="Tesla">
+        </div>
+        <div>
+          <label class="block mb-1 text-sm">Модель:</label>
+          <input type="text" id="ecar-model"
+                 class="w-full px-3 py-2 rounded bg-slate-700 border border-slate-600 focus:outline-none"
+                 placeholder="Model 3">
+        </div>
+        <div>
+          <label class="block mb-1 text-sm">Рік:</label>
+          <input type="number" id="ecar-year"
+                 class="w-full px-3 py-2 rounded bg-slate-700 border border-slate-600 focus:outline-none"
+                 value="2022">
+        </div>
+        <div>
+          <label class="block mb-1 text-sm">Батарея (kWh):</label>
+          <input type="number" id="ecar-battery"
+                 class="w-full px-3 py-2 rounded bg-slate-700 border border-slate-600 focus:outline-none"
+                 value="75">
+        </div>
+      </div>
+
+      <div class="flex flex-wrap gap-3 mt-3">
+        <button id="ecar-show"
+                class="px-4 py-2 rounded bg-cyan-500 hover:bg-cyan-600 text-sm font-semibold">
+          Показати інформацію
+        </button>
+        <button id="ecar-clear"
+                class="px-4 py-2 rounded bg-red-500 hover:bg-red-600 text-sm font-semibold">
+          Очистити поля
+        </button>
+      </div>
+
+      <div id="ecar-output"
+           class="mt-3 rounded-lg bg-slate-700/70 px-4 py-3 text-sm min-h-[3rem]">
+      </div>
+    </section>
+
+    <!--  ЗАВДАННЯ 5 -->
+    <section class="bg-slate-800 rounded-2xl p-5 shadow-xl space-y-4">
+      <h2 class="text-xl font-semibold text-cyan-300">
+        Завдання 5. Статичний метод у класі
+      </h2>
+
+      <div class="grid md:grid-cols-3 gap-4 items-end">
+        <div>
+          <label class="block mb-1 text-sm">Число a:</label>
+          <input type="number" id="mh-a"
+                 class="w-full px-3 py-2 rounded bg-slate-700 border border-slate-600 focus:outline-none"
+                 value="5">
+        </div>
+        <div>
+          <label class="block mb-1 text-sm">Число b:</label>
+          <input type="number" id="mh-b"
+                 class="w-full px-3 py-2 rounded bg-slate-700 border border-slate-600 focus:outline-none"
+                 value="7">
+        </div>
+        <div>
+          <button id="mh-run"
+                  class="w-full px-4 py-2 rounded bg-cyan-500 hover:bg-cyan-600 text-sm font-semibold">
+            Обчислити a + b
+          </button>
+        </div>
+      </div>
+
+      <div id="mh-output"
+           class="mt-3 rounded-lg bg-slate-700/70 px-4 py-3 text-sm min-h-[2.5rem]">
+      </div>
+    </section>
+
+    <!--  ЗАВДАННЯ 6  -->
+    <section class="bg-slate-800 rounded-2xl p-5 shadow-xl space-y-4">
+      <h2 class="text-xl font-semibold text-cyan-300">
+        Завдання 6. Фігури: прямокутник і квадрат
+      </h2>
+
+      <div class="bg-gray-800 rounded-2xl shadow-2xl p-8 w-full max-w-lg mx-auto">
+        <h3 class="text-2xl font-bold mb-6 text-center text-cyan-400">
+          Лабораторна робота 8 — Варіант 13
+        </h3>
+
+        <form id="shapeForm" class="space-y-4">
+          <div>
+            <label class="block mb-1">Ширина (width):</label>
+            <input type="number" id="width"
+                   class="w-full p-2 rounded bg-gray-700 focus:outline-none">
+          </div>
+
+          <div>
+            <label class="block mb-1">Висота (height):</label>
+            <input type="number" id="height"
+                   class="w-full p-2 rounded bg-gray-700 focus:outline-none">
+          </div>
+
+          <div class="flex gap-4 mt-6">
+            <button type="button" id="showBtn"
+                    class="bg-cyan-500 hover:bg-cyan-600 text-white px-4 py-2 rounded w-1/2">
+              Показати інформацію
+            </button>
+            <button type="reset" id="clearBtn"
+                    class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded w-1/2">
+              Очистити
+            </button>
+          </div>
+        </form>
+
+        <div id="result" class="mt-6 p-4 bg-gray-700 rounded-lg hidden"></div>
+      </div>
+    </section>
+  </main>
+
+
+  <button onclick="history.back()"
+          class="fixed bottom-6 right-6 w-14 h-14 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-lg hover:bg-blue-700 transition">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+         stroke="currentColor" class="w-6 h-6">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M15 19l-7-7 7-7" />
+    </svg>
+  </button>
+
 
   <script>
+    // Завдання 1
+    const timeObj = { hours: 20, minutes: 30, seconds: 45 };
+
+    function readTimeInputs() {
+      const h = parseInt(document.getElementById('t1-hours').value, 10);
+      const m = parseInt(document.getElementById('t1-minutes').value, 10);
+      const s = parseInt(document.getElementById('t1-seconds').value, 10);
+      timeObj.hours = isNaN(h) ? 0 : h;
+      timeObj.minutes = isNaN(m) ? 0 : m;
+      timeObj.seconds = isNaN(s) ? 0 : s;
+    }
+
+    function normalizeTime(totalSeconds) {
+      const secondsInDay = 24 * 3600;
+      let t = ((totalSeconds % secondsInDay) + secondsInDay) % secondsInDay;
+      const h = Math.floor(t / 3600);
+      t %= 3600;
+      const m = Math.floor(t / 60);
+      const s = t % 60;
+      return { hours: h, minutes: m, seconds: s };
+    }
+
+    function formatTime(h, m, s) {
+      const pad = n => String(n).padStart(2, '0');
+      return pad(h) + ':' + pad(m) + ':' + pad(s);
+    }
+
+    document.getElementById('t1-show').addEventListener('click', () => {
+      readTimeInputs();
+      const out = document.getElementById('t1-output');
+      out.textContent = 'Поточний час: ' +
+        formatTime(timeObj.hours, timeObj.minutes, timeObj.seconds);
+    });
+
+    document.getElementById('t1-add').addEventListener('click', () => {
+      readTimeInputs();
+      const delta = parseInt(document.getElementById('t1-delta').value, 10) || 0;
+      const totalSeconds =
+        timeObj.hours * 3600 + timeObj.minutes * 60 + timeObj.seconds + delta;
+      const norm = normalizeTime(totalSeconds);
+      timeObj.hours = norm.hours;
+      timeObj.minutes = norm.minutes;
+      timeObj.seconds = norm.seconds;
+      const out = document.getElementById('t1-output');
+      out.textContent = `Новий час (додано ${delta} с): ` +
+        formatTime(timeObj.hours, timeObj.minutes, timeObj.seconds);
+      document.getElementById('t1-hours').value = timeObj.hours;
+      document.getElementById('t1-minutes').value = timeObj.minutes;
+      document.getElementById('t1-seconds').value = timeObj.seconds;
+    });
+
+    // Завдання 2.1 
+    const monthsUa = [
+      'січня', 'лютого', 'березня', 'квітня', 'травня', 'червня',
+      'липня', 'серпня', 'вересня', 'жовтня', 'листопада', 'грудня'
+    ];
+    const weekdaysUa = [
+      'неділя', 'понеділок', 'вівторок', 'середа',
+      'четвер', "п'ятниця", 'субота'
+    ];
+
+    document.getElementById('t21-run').addEventListener('click', () => {
+      const now = new Date();
+      const d = now.getDate();
+      const monthName = monthsUa[now.getMonth()];
+      const year = now.getFullYear();
+      const weekdayName = weekdaysUa[now.getDay()];
+      const hh = String(now.getHours()).padStart(2, '0');
+      const mm = String(now.getMinutes()).padStart(2, '0');
+
+      const out = document.getElementById('t21-output');
+      out.innerHTML =
+        `Дата: <strong>${d} ${monthName} ${year} року</strong><br>` +
+        `День тижня: <strong>${weekdayName}</strong><br>` +
+        `Час: <strong>${hh}:${mm}</strong>`;
+    });
+
+    // Завдання 2.2 
+    document.getElementById('t22-run').addEventListener('click', () => {
+      const year = parseInt(document.getElementById('t22-year').value, 10);
+      const month = parseInt(document.getElementById('t22-month').value, 10);
+      const out = document.getElementById('t22-output');
+
+      if (isNaN(year) || isNaN(month) || month < 1 || month > 12) {
+        out.textContent = 'Введіть коректний рік і номер місяця (1–12).';
+        return;
+      }
+
+      const lastDay = new Date(year, month, 0).getDate();
+      out.textContent = `Останній день місяця: ${lastDay}`;
+    });
+
+    // Завдання 2.3 
+    document.getElementById('t23-run').addEventListener('click', () => {
+      const now = new Date();
+      const secondsFromStart =
+        now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
+      const secondsInDay = 24 * 3600;
+      const secondsToNext = secondsInDay - secondsFromStart;
+
+      const out = document.getElementById('t23-output');
+      out.innerHTML =
+        `Секунд від початку сьогоднішнього дня: <strong>${secondsFromStart}</strong><br>` +
+        `Секунд до початку наступного дня: <strong>${secondsToNext}</strong>`;
+    });
+
+    // Завдання 3
+    class Car {
+      constructor(brand, model, year) {
+        this.brand = brand;
+        this.model = model;
+        this.year = year;
+      }
+
+      info() {
+        return `Авто: ${this.brand} ${this.model}, ${this.year} року.`;
+      }
+    }
+
+    document.getElementById('car-show').addEventListener('click', () => {
+      const brand = document.getElementById('car-brand').value.trim();
+      const model = document.getElementById('car-model').value.trim();
+      const year = parseInt(document.getElementById('car-year').value, 10);
+      const out = document.getElementById('car-output');
+
+      if (!brand || !model || isNaN(year)) {
+        out.textContent = 'Будь ласка, заповніть всі поля коректно.';
+        return;
+      }
+
+      const car1 = new Car(brand, model, year);
+      out.textContent = car1.info();
+    });
+
+    document.getElementById('car-clear').addEventListener('click', () => {
+      document.getElementById('car-brand').value = '';
+      document.getElementById('car-model').value = '';
+      document.getElementById('car-year').value = '';
+      document.getElementById('car-output').textContent = '';
+    });
+
+    // Завдання 4
+    class ElectricCar extends Car {
+      constructor(brand, model, year, battery) {
+        super(brand, model, year);
+        this.battery = battery;
+      }
+
+      charge() {
+        return `${this.brand} ${this.model} заряджається... Батарея: ${this.battery} kWh`;
+      }
+    }
+
+    document.getElementById('ecar-show').addEventListener('click', () => {
+      const brand = document.getElementById('ecar-brand').value.trim();
+      const model = document.getElementById('ecar-model').value.trim();
+      const year = parseInt(document.getElementById('ecar-year').value, 10);
+      const battery = parseFloat(document.getElementById('ecar-battery').value);
+      const out = document.getElementById('ecar-output');
+
+      if (!brand || !model || isNaN(year) || isNaN(battery) || battery <= 0) {
+        out.textContent = 'Будь ласка, заповніть всі поля коректно.';
+        return;
+      }
+
+      const tesla = new ElectricCar(brand, model, year, battery);
+      out.innerHTML =
+        tesla.info() + '<br>' +
+        tesla.charge();
+    });
+
+    document.getElementById('ecar-clear').addEventListener('click', () => {
+      document.getElementById('ecar-brand').value = '';
+      document.getElementById('ecar-model').value = '';
+      document.getElementById('ecar-year').value = '';
+      document.getElementById('ecar-battery').value = '';
+      document.getElementById('ecar-output').textContent = '';
+    });
+
+    // Завдання 5
+    class MathHelper {
+      static add(a, b) {
+        return a + b;
+      }
+    }
+
+    document.getElementById('mh-run').addEventListener('click', () => {
+      const a = parseFloat(document.getElementById('mh-a').value);
+      const b = parseFloat(document.getElementById('mh-b').value);
+      const out = document.getElementById('mh-output');
+
+      if (isNaN(a) || isNaN(b)) {
+        out.textContent = 'Введіть два числа.';
+        return;
+      }
+
+      const sum = MathHelper.add(a, b);
+      out.textContent = `Результат MathHelper.add(${a}, ${b}) = ${sum}`;
+    });
+
+    // Завдання 6
     class Rectangle {
       constructor(width, height) {
         this.width = width;
@@ -62,16 +523,16 @@
       }
     }
 
-    const showBtn = document.getElementById("showBtn");
-    const resultDiv = document.getElementById("result");
+    const showBtn = document.getElementById('showBtn');
+    const resultDiv = document.getElementById('result');
 
-    showBtn.addEventListener("click", () => {
-      const width = parseFloat(document.getElementById("width").value);
-      const height = parseFloat(document.getElementById("height").value);
+    showBtn.addEventListener('click', () => {
+      const width = parseFloat(document.getElementById('width').value);
+      const height = parseFloat(document.getElementById('height').value);
 
       if (isNaN(width) || isNaN(height) || width <= 0 || height <= 0) {
-        resultDiv.innerHTML = `<p class="text-red-400"> Введіть коректні значення!</p>`;
-        resultDiv.classList.remove("hidden");
+        resultDiv.innerHTML = '<p class="text-red-400">Введіть коректні значення!</p>';
+        resultDiv.classList.remove('hidden');
         return;
       }
 
@@ -94,19 +555,13 @@
         `;
       }
 
-      resultDiv.classList.remove("hidden");
+      resultDiv.classList.remove('hidden');
     });
 
-    document.getElementById("clearBtn").addEventListener("click", () => {
-      resultDiv.innerHTML = "";
-      resultDiv.classList.add("hidden");
+    document.getElementById('clearBtn').addEventListener('click', () => {
+      resultDiv.innerHTML = '';
+      resultDiv.classList.add('hidden');
     });
   </script>
-    <button onclick="history.back()"
-    class="fixed bottom-6 right-6 w-14 h-14 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-lg hover:bg-blue-700 transition">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-    </svg>
-  </button>
 </body>
 </html>

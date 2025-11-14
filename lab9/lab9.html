@@ -2,7 +2,7 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8">
-  <title>Tailwind Logo Animation</title>
+  <title>Лабораторна 9</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
@@ -10,20 +10,20 @@
 
 <div id="logo" class="relative cursor-pointer select-none flex items-center justify-center">
 
-  <!-- ПУЛЬСУЮЧЕ КІЛЬЦЕ -->
+
   <div id="ring"
        class="absolute w-40 h-40 md:w-48 md:h-48 rounded-full border border-cyan-400/50
               animate-pulse shadow-[0_0_40px_rgba(34,211,238,0.35)]">
   </div>
 
-  <!-- ЗАЛИВКА (коло → scale) -->
+
   <div id="fill"
        class="absolute w-40 h-40 md:w-48 md:h-48 rounded-full
               bg-gradient-to-br from-cyan-500/50 via-sky-500/60 to-blue-800/80 blur-sm
               opacity-0 scale-0 transition-all duration-700 ease-out">
   </div>
 
-  <!-- ТЕКСТ ЛОГОТИПУ -->
+
   <div id="text" class="relative text-slate-200 font-semibold tracking-[0.25em] text-xl md:text-2xl flex">
   </div>
 </div>
@@ -136,6 +136,11 @@ document.addEventListener("DOMContentLoaded", () => {
   reset();
 });
 </script>
-
+<button onclick="history.back()"
+    class="fixed bottom-6 right-6 w-14 h-14 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-lg hover:bg-blue-700 transition">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+    </svg>
+  </button>
 </body>
 </html>
