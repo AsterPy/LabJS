@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Лабораторна 12</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body class="bg-gray-100 min-h-screen p-10">
+
+<div class="container mx-auto space-y-16">
+
+<!-- 1 завдання -->
+<section class="bg-white shadow rounded-2xl p-6 space-y-6">
+  <h2 class="text-2xl font-bold text-gray-800">Завдання 1 – jQuery-ефекти</h2>
+
+  <ul class="list-disc list-inside text-gray-700">
+    <li>.slideDown()</li>
+    <li>.fadeIn()</li>
+    <li>.fadeOut()</li>
+    <li>.slideToggle()</li>
+  </ul>
+
+  <div id="anim-box" class="w-full p-6 bg-blue-200 border border-blue-300 rounded-xl text-center text-xl font-semibold hidden">
+    Анімований блок
+  </div>
+
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+    <button id="btn-slideDown" class="px-3 py-2 bg-blue-600 text-white rounded-lg">.slideDown()</button>
+    <button id="btn-fadeIn" class="px-3 py-2 bg-green-600 text-white rounded-lg">.fadeIn()</button>
+    <button id="btn-fadeOut" class="px-3 py-2 bg-red-600 text-white rounded-lg">.fadeOut()</button>
+    <button id="btn-slideToggle" class="px-3 py-2 bg-purple-600 text-white rounded-lg">.slideToggle()</button>
+  </div>
+</section>
+
+<!-- 2 завдання -->
+<section class="bg-white shadow rounded-2xl p-6 space-y-8">
+
+  <h2 class="text-2xl font-bold text-gray-800">Завдання 2 – Анімований логотип ІПЗ</h2>
+
+  <p class="text-gray-600">
+    <b>.animate()</b>, properties, duration, easing, complete, options.
+  </p>
+
+  <div id="logo-wrapper" class="relative w-full flex justify-center py-10">
+    <div id="logo" 
+         class="text-4xl font-bold tracking-[0.3em] text-cyan-700 opacity-0 relative left-[-200px]">
+         ІНЖЕНЕРІЯ&nbsp;ПЗ
+    </div>
+  </div>
+
+  <div class="flex justify-center">
+    <button id="logo-start" class="px-6 py-3 bg-cyan-600 text-white rounded-xl shadow hover:bg-cyan-700">
+      Запустити анімацію логотипу
+    </button>
+  </div>
+
+</section>
+
+</div>
+
+
+<script>
+/*  1 завдання  */
+$("#btn-slideDown").click(() => {
+  $("#anim-box").slideDown(500);
+});
+
+$("#btn-fadeIn").click(() => {
+  $("#anim-box").fadeIn(400);
+});
+
+$("#btn-fadeOut").click(() => {
+  $("#anim-box").fadeOut(400);
+});
+
+$("#btn-slideToggle").click(() => {
+  $("#anim-box").slideToggle(400);
+});
+
+
+/*  2 завдання  */
+$("#logo-start").click(() => {
+  const logo = $("#logo");
+
+  logo.stop(true, true);
+
+  logo.css({
+    opacity: 0,
+    left: "-200px",
+    letterSpacing: "0.1em"
+  });
+
+  logo.animate(
+    {
+      opacity: 1,
+      left: "0px",
+      letterSpacing: "0.4em"
+    },
+    {
+      duration: 1500,
+      easing: "swing",
+      queue: true,
+
+      start: function() {
+        console.log("Анімація почалась");
+      },
+
+      step: function(now, fx) {
+        if (fx.prop === "opacity" && now > 0.7) {
+          $(this).addClass("text-blue-600");
+        }
+      },
+
+      complete: function() {
+        console.log("Анімація завершена");
+
+        $(this).animate(
+          { letterSpacing: "0.2em" },
+          700
+        );
+      }
+    }
+  );
+});
+</script>
+
+<button onclick="history.back()"
+    class="fixed bottom-6 right-6 w-14 h-14 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-lg hover:bg-blue-700 transition">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+    </svg>
+</button>
+
+</body>
+</html>

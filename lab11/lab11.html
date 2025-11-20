@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>Лабораторна 11</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body class="bg-gray-100 text-gray-900 min-h-screen p-6">
+<div class="container mx-auto space-y-12">
+
+    <!-- 1 завдання -->
+  <section class="bg-white rounded-2xl p-6 shadow space-y-4">
+    <h2 class="text-xl font-bold">Завдання 1 – Методи .html(), .css(), .val(), .attr()</h2>
+
+    <div class="space-y-2">
+      <h3 class="font-semibold">.html()</h3>
+      <div id="t1-html" class="p-4 bg-gray-200 rounded-xl">
+        <p>Початковий <strong>HTML</strong> контент.</p>
+      </div>
+      <button id="t1-html-btn" class="px-3 py-1 bg-blue-500 text-white rounded-lg">Змінити .html()</button>
+    </div>
+
+    <div class="space-y-2">
+      <h3 class="font-semibold">.css()</h3>
+      <div id="t1-css" class="p-4 bg-gray-200 rounded-xl">
+        Цей блок буде стилізовано.
+      </div>
+      <button id="t1-css-btn" class="px-3 py-1 bg-green-500 text-white rounded-lg">Застосувати .css()</button>
+    </div>
+
+    <div class="space-y-2">
+      <h3 class="font-semibold">.val()</h3>
+      <input id="t1-val" class="px-3 py-2 rounded-xl bg-gray-200 w-full" placeholder="Введи текст">
+      <button id="t1-val-btn" class="px-3 py-1 bg-purple-500 text-white rounded-lg">Прочитати .val()</button>
+      <div id="t1-val-out" class="text-sm"></div>
+    </div>
+
+    <div class="space-y-2">
+      <h3 class="font-semibold">.attr()</h3>
+      <a id="t1-link" href="https://google.com" class="text-blue-600 underline">Google</a>
+      <button id="t1-attr-btn" class="px-3 py-1 bg-yellow-500 text-white rounded-lg">Змінити href</button>
+    </div>
+  </section>
+
+
+    <!-- 2 завдання -->
+  <section class="bg-white rounded-2xl p-6 shadow space-y-4">
+    <h2 class="text-xl font-bold">Завдання 2 — .prepend(), .clone(), .height(function), .outerHeight()</h2>
+
+    <div>
+      <h3 class="font-semibold">.prepend()</h3>
+      <ul id="t2-list" class="bg-gray-200 rounded-xl p-3 space-y-1">
+        <li>Елемент 1</li>
+        <li>Елемент 2</li>
+      </ul>
+      <button id="t2-prepend-btn" class="px-3 py-1 bg-blue-500 text-white rounded-lg mt-2">
+        Додати елемент на початок
+      </button>
+    </div>
+
+    <div>
+      <h3 class="font-semibold">.clone()</h3>
+      <div id="t2-clone-source" class="bg-gray-200 p-3 rounded-xl inline-block">Оригінал</div>
+      <div id="t2-clone-target" class="bg-gray-100 p-3 rounded-xl inline-block ml-4"></div>
+      <br>
+      <button id="t2-clone-btn" class="px-3 py-1 bg-green-500 text-white rounded-lg mt-2">Клонувати</button>
+    </div>
+
+    <div>
+      <h3 class="font-semibold">.height(function)</h3>
+      <div id="t2-box" class="bg-purple-400 p-4 text-center text-white rounded-xl" style="height:80px;">
+        Висота: 80px
+      </div>
+      <button id="t2-height-btn" class="px-3 py-1 bg-purple-600 text-white rounded-lg mt-2">Змінити висоту</button>
+    </div>
+
+    <div>
+      <h3 class="font-semibold">.outerHeight()</h3>
+      <div id="t2-outer" class="bg-pink-300 p-6 border-4 border-pink-400 rounded-xl">
+        Блок з padding та border
+      </div>
+      <button id="t2-outer-btn" class="px-3 py-1 bg-pink-500 text-white rounded-lg mt-2">Показати outerHeight()</button>
+      <div id="t2-outer-out" class="text-sm mt-1"></div>
+    </div>
+  </section>
+
+
+      <!-- 3 завдання -->
+  <section class="bg-white rounded-2xl p-6 shadow space-y-4">
+    <h2 class="text-xl font-bold">Завдання 3 — Навігація DOM</h2>
+
+    <div id="t3-root" class="bg-gray-200 p-4 rounded-xl">
+      <div id="t3-parent" class="p-3 bg-gray-300 rounded-xl">
+        <p>Parent</p>
+
+        <div class="child bg-gray-100 p-2 rounded mb-1">
+          Child A
+          <span class="grand bg-gray-300 px-2 py-1 rounded inline-block mt-1">Grandchild A1</span>
+        </div>
+
+        <div class="child bg-gray-100 p-2 rounded mb-1">
+          Child B
+          <span class="grand target bg-gray-300 px-2 py-1 rounded inline-block mt-1">Grandchild B1 (target)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="space-y-2">
+      <button id="t3-children" class="px-3 py-1 bg-blue-500 text-white rounded-lg w-full">.children()</button>
+      <button id="t3-is" class="px-3 py-1 bg-green-500 text-white rounded-lg w-full">.is()</button>
+      <button id="t3-parents" class="px-3 py-1 bg-yellow-500 text-white rounded-lg w-full">.parents()</button>
+      <button id="t3-closest" class="px-3 py-1 bg-purple-500 text-white rounded-lg w-full">.closest()</button>
+      <button id="t3-parentsUntil" class="px-3 py-1 bg-rose-500 text-white rounded-lg w-full">.parentsUntil()</button>
+    </div>
+
+    <button id="t3-clear" class="px-3 py-1 bg-gray-400 text-gray-800 hover:bg-gray-300 rounded-lg w-full">
+        Очистити виділення
+    </button>
+
+    <div id="t3-output" class="text-sm bg-gray-100 p-3 rounded-xl"></div>
+  </section>
+
+
+      <!-- 4 завдання -->
+  <section class="bg-white rounded-2xl p-6 shadow space-y-4">
+    <h2 class="text-xl font-bold">Завдання 4 — .filter()</h2>
+
+    <div class="space-x-2">
+      <span class="flt bg-gray-200 px-2 py-1 rounded">A</span>
+      <span class="flt bg-gray-200 px-2 py-1 rounded">B</span>
+      <span class="flt bg-gray-200 px-2 py-1 rounded">C</span>
+    </div>
+
+    <button id="t4-btn" class="px-3 py-1 bg-blue-500 text-white rounded-lg mt-2">Позначити всі .flt</button>
+
+    <ul id="t4-list" class="list-decimal list-inside bg-gray-200 p-3 rounded-xl mt-4 space-y-1">
+      <li>1</li><li>2</li><li>3</li>
+      <li>4</li><li>5</li><li>6</li>
+      <li>7</li><li>8</li>
+    </ul>
+
+    <button id="t4-li-btn" class="px-3 py-1 bg-purple-500 text-white rounded-lg">Кожен третій li</button>
+  </section>
+
+
+      <!-- 5 завдання -->
+  <section id="task5" class="bg-white rounded-2xl p-6 shadow space-y-4">
+  <h2 class="text-xl font-bold">Завдання 5 – $.map(), $.merge(), $.noop(), $.now()</h2>
+
+    <div class="space-y-2">
+      <button id="t5-map" class="px-3 py-1 bg-green-500 text-white rounded-lg w-full">
+        $.map() – Квадрати чисел
+      </button>
+      <button id="t5-merge" class="px-3 py-1 bg-blue-500 text-white rounded-lg w-full">
+        $.merge() – Об’єднати масиви
+      </button>
+      <button id="t5-noop" class="px-3 py-1 bg-yellow-500 text-white rounded-lg w-full">
+        $.noop() – Порожня функція
+      </button>
+      <button id="t5-now" class="px-3 py-1 bg-fuchsia-500 text-white rounded-lg w-full">
+        $.now() – Показати timestamp
+      </button>
+    </div>
+
+    <div>
+      <pre id="t5-out" class="bg-gray-100 p-4 rounded-xl h-48 overflow-auto text-sm"></pre>
+    </div>
+</section>
+
+<button onclick="history.back()"
+    class="fixed bottom-6 right-6 w-14 h-14 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-lg hover:bg-blue-700 transition">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+    </svg>
+  </button>
+
+</div>
+
+
+<script>
+/*  1 завдання  */
+$("#t1-html-btn").click(() => {
+  $("#t1-html").html("<strong>HTML змінено!</strong>");
+});
+$("#t1-css-btn").click(() => {
+  $("#t1-css").css({ backgroundColor: "#10b981", color: "#000" });
+});
+$("#t1-val-btn").click(() => {
+  $("#t1-val-out").text("Введено: " + $("#t1-val").val());
+});
+$("#t1-attr-btn").click(() => {
+  $("#t1-link").attr("href", "https://youtube.com");
+});
+
+/*  2 завдання  */
+let counter = 3;
+$("#t2-prepend-btn").click(() => {
+  $("#t2-list").prepend(`<li>Новий ${counter}</li>`);
+  counter++;
+});
+
+$("#t2-clone-btn").click(() => {
+  $("#t2-clone-source").clone().appendTo("#t2-clone-target");
+});
+
+$("#t2-height-btn").click(() => {
+  $("#t2-box").height((i, h) => {
+    const newH = h + 20;
+    $("#t2-box").text("Висота: " + newH + "px");
+    return newH;
+  });
+});
+
+$("#t2-outer-btn").click(() => {
+  $("#t2-outer-out").text("outerHeight: " + $("#t2-outer").outerHeight());
+});
+
+/*  3 завдання  */
+function highlight(el){
+  $(el).addClass("ring-2 ring-green-400 ring-offset-2");
+}
+
+$("#t3-children").click(() => {
+  $("#t3-output").text(".children(): показано дітей #t3-parent");
+  highlight($("#t3-parent").children());
+});
+
+$("#t3-is").click(() => {
+  const r = $(".target").is(".grand");
+  $("#t3-output").text(".is(): чи target є grandchild = " + r);
+  highlight($(".target"));
+});
+
+$("#t3-parents").click(() => {
+  highlight($(".target").parents());
+  $("#t3-output").text(".parents(): всі батьки target виділені");
+});
+
+$("#t3-closest").click(() => {
+  highlight($(".target").closest(".child"));
+  $("#t3-output").text(".closest(): найближчий .child знайдено");
+});
+
+$("#t3-parentsUntil").click(() => {
+  highlight($(".target").parentsUntil("#t3-root"));
+  $("#t3-output").text(".parentsUntil(): елементи між target і root виділені");
+});
+
+$("#t3-clear").click(() => {
+  $("#t3-root *").removeClass("ring-2 ring-green-400 ring-offset-2");
+});
+
+/*  4 завдання  */
+$("#t4-btn").click(() => {
+  $(".flt").filter(() => true).each(function(){
+    $(this).addClass("bg-green-500 text-black").text($(this).text() + " (modify)");
+  });
+});
+
+$("#t4-li-btn").click(() => {
+  $("#t4-list li").filter((i) => (i+1) % 3 === 0).each(function(){
+    $(this).addClass("bg-purple-600 px-2 text-white").text($(this).text() + " (modify)");
+  });
+});
+
+/*  5 завдання  */
+function t5_log(title, value) {
+  $("#t5-out").append(title + ":\n" + JSON.stringify(value, null, 2) + "\n\n");
+}
+
+$("#t5-map").click(() => {
+  const nums = [1, 2, 3, 4, 5];
+  const squares = $.map(nums, (v) => v * v);
+  t5_log("$.map() – квадрати [1,2,3,4,5]", squares);
+});
+
+$("#t5-merge").click(() => {
+  const a = [1, 2, 3];
+  const b = [4, 5, 6];
+  
+  const result = $.merge([], a);
+  $.merge(result, b);
+
+  t5_log("$.merge() – об’єднання масивів [1,2,3] + [4,5,6]", result);
+});
+
+$("#t5-noop").click(() => {
+  $.noop(); // нічого не робить
+  t5_log("$.noop()", "Порожня функція була викликана, але нічого не зробила");
+});
+
+$("#t5-now").click(() => {
+  const ts = $.now();
+  t5_log("$.now() – поточний timestamp (мілісекунди)", ts);
+});
+
+</script>
+
+
+</body>
+</html>
